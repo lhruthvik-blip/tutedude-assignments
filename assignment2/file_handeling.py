@@ -23,6 +23,7 @@ else:
 #print(f.readlines()) # -> prints the content of the file in list format
 #print(l[1]) # -> prints the 2nd line of the file
 
+print("reading from a file:")
 print(f.read())
 f.seek(0)
 l=f.readlines()
