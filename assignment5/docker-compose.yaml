@@ -1,0 +1,27 @@
+version: '3'
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+    networks:
+      - app-network
+
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb+srv://lhruthvik_db_user:Hail21naga@cluster0.k98jo2p.mongodb.net/?appName=Cluster0&tlsAllowInvalidCertificates=true&retryWrites=true&w=majority&tls=true
+    volumes:
+      - ./backend:/app    
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
