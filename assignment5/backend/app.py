@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 # MongoDB Atlas connection string (store in env variable for security)
 load_dotenv()  # Load environment variables from .env file
-mongo_uri = os.getenv('mongo_uri')
+mongo_uri = os.getenv('mongo_uri') or os.getenv('MONGO_URI')
 
 try:
     client = MongoClient(mongo_uri, server_api=ServerApi('1'), retryWrites=True, w='majority', connectTimeoutMS=30000, socketTimeoutMS=30000)
